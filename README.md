@@ -1,6 +1,6 @@
 # 🧨 Laboratorio ACME - Gestión de Servicios
 
-![ACME Corporation](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejZ2eWh0a256enBqdTNoZ3U3eXNkaDNvZGN2aGc5eXpybWRpZzV6ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSxdQJIoiRXHl6/giphy.gif)
+![ACME Corporation](https://vignette.wikia.nocookie.net/animaniacs/images/d/db/Acme_labs1.jpg/revision/latest/scale-to-width-down/2000?cb=20150115050012)
 
 Plataforma web desarrollada en Django para la gestión operativa del famoso Laboratorio Acme (propiedad de Warner Bros.). Este sistema permite la administración de inventario de servicios excéntricos, gestión de personal y procesamiento de pedidos de clientes.
 
