@@ -40,7 +40,7 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local.
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone <URL-DEL-REPOSITORIO>
+    git clone https://github.com/AliciaContreras/M6_PORTAFOLIO
     cd <NOMBRE-DEL-DIRECTORIO>
     ```
 
@@ -91,4 +91,4 @@ Para acceder con los usuarios de prueba, utiliza la siguiente contraseña para t
 | **Administrador** | `stevenspielberg` |
 | **Jefes de Laboratorio** | `Cerebro`, `ProfesorRascahuele`, `Fenomenoide` |
 | **Trabajadores** | `Pinky`, `HolaEnfermera`, `YakkoWarner`, `WakkoWarner`, `DotWarner` |
-| **Cliente** | `Wile_coyote` |
+| **Cliente** | `wile_coyote` |
