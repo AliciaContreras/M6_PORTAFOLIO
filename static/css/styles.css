@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --acme-red: #E3001B;
+    --acme-blue: #004E98;
+    --acme-yellow: #FFD700;
+    --acme-black: #1a1a1a;
+    --acme-bg: #FFFBF0;
+}
+
+body {
+    background-color: var(--acme-bg);
+    font-family: 'Roboto', sans-serif;
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 20px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand, .btn {
+    font-family: 'Bangers', cursive !important;
+    letter-spacing: 1px;
+}
+
+/* Navbar Reforzado */
+.navbar-acme {
+    background-color: #004E98 !important;
+    background: linear-gradient(180deg, var(--acme-blue) 0%, #003366 100%) !important;
+    border-bottom: 4px solid var(--acme-black);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-brand {
+    font-size: 2.2rem !important;
+    color: var(--acme-yellow) !important;
+    text-shadow: 3px 3px 0 var(--acme-black);
+    transform: rotate(-2deg);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white !important;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 0 #000;
+    margin-right: 10px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--acme-yellow) !important;
+    transform: scale(1.1);
+}
+
+/* Botones */
+.btn {
+    border: 2px solid var(--acme-black);
+    border-radius: 30px;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0px var(--acme-black);
+    transition: all 0.1s;
+}
+
+.btn:active { transform: translate(2px, 2px); box-shadow: none; }
+.btn-primary { background-color: var(--acme-blue); border-color: black; }
+.btn-danger { background-color: var(--acme-red); color: var(--acme-yellow); border-color: black; }
+.btn-warning { background-color: var(--acme-yellow); color: black; border-color: black; }
+
+/* Footer */
+.footer {
+    background-color: var(--acme-black);
+    color: white;
+    border-top: 5px solid var(--acme-red);
+    padding: 30px 0;
+}
+.footer h3 { color: var(--acme-yellow); letter-spacing: 2px; }
+
+/* Tarjetas */
+.card {
+    border: 3px solid var(--acme-black);
+    border-radius: 15px;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.8);
+    transition: transform 0.2s;
+}
+.card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px rgba(0,0,0,0.8); }
+.card-header { border-bottom: 3px solid black; font-family: 'Bangers', cursive; font-size: 1.5rem; }

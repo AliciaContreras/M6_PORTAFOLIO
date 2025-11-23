@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2 class="mb-4">📦 Mis Pedidos Acme</h2>
+
+{% if pedidos %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Servicio</th>
+                    <th>Detalles</th>
+                    <th>Estado</th>
+                    <th>Encargado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pedidos %}
+                <tr>
+                    <td>{{ p.fecha_solicitud|date:"d/m/Y H:i" }}</td>
+                    <td>{{ p.servicio.titulo }}</td>
+                    <td>{{ p.descripcion_pedido }}</td>
+                    <td>
+                        {% if p.estado == 'PENDIENTE' %}
+                            <span class="badge bg-warning text-dark">Pendiente</span>
+                        {% elif p.estado == 'EN_PROCESO' %}
+                            <span class="badge bg-info">Fabricando...</span>
+                        {% else %}
+                            <span class="badge bg-success">Entregado</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if p.trabajador_asignado %}
+                            {{ p.trabajador_asignado.first_name }} ({{ p.trabajador_asignado.username }})
+                        {% else %}
+                            <span class="text-muted fst-italic">Buscando científico...</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">Aún no has realizado ningún pedido explosivo.</div>
+    <a href="{% url 'inicio' %}" class="btn btn-primary">Ir al catálogo</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2 class="mb-4">🔬 Panel de Control del Laboratorio</h2>
+
+<!-- Sección de Mis Trabajos Actuales -->
+<div class="card mb-5 border-primary">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">🔨 Mis Trabajos en Curso</h5>
+    </div>
+    <div class="card-body">
+        {% if mis_trabajos %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Servicio</th>
+                        <th>Requerimiento</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for trabajo in mis_trabajos %}
+                    <tr>
+                        <td>{{ trabajo.cliente.username }}</td>
+                        <td>{{ trabajo.servicio.titulo }}</td>
+                        <td>{{ trabajo.descripcion_pedido }}</td>
+                        <td>
+                            <a href="{% url 'finalizar_pedido' trabajo.id %}" class="btn btn-success btn-sm">Terminar Trabajo ✅</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-muted">No tienes trabajos activos. ¡Toma uno de la lista de pendientes!</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Sección de Pedidos Pendientes (Bolsa de Trabajo) -->
+<h4 class="text-danger">🔥 Pedidos Pendientes (Bolsa de Trabajo)</h4>
+{% if pedidos_pendientes %}
+    <div class="row">
+        {% for p in pedidos_pendientes %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 border-danger">
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.servicio.titulo }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Cliente: {{ p.cliente.username }}</h6>
+                    <p class="card-text bg-light p-2 rounded">"{{ p.descripcion_pedido }}"</p>
+                    <p class="small text-muted">{{ p.fecha_solicitud|date:"d M Y, H:i" }}</p>
+                </div>
+                <div class="card-footer bg-white">
+                    <a href="{% url 'tomar_pedido' p.id %}" class="btn btn-danger w-100">¡Yo lo hago! 🙋‍♂️</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-success">¡Increíble! No hay pedidos pendientes. Tómate un descanso.</div>
+{% endif %}
+
+{% endblock %}

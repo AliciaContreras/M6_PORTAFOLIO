@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white text-center">
+                <h4>Acceso al Laboratorio</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Renderizado simple de formulario -->
+                    {{ form.as_p }}
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </div>
+                </form>
+                <hr>
+                <p class="text-center">¿Eres nuevo? <a href="{% url 'registro' %}">Crea tu cuenta aquí</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

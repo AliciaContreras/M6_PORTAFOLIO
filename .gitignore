@@ -1,0 +1,17 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Django ---
+*.log
+
+# --- Entorno Virtual ---
+venv/
+env/
+.env
+
+# --- IDEs ---
+.idea/
+.vscode/
+.DS_Store

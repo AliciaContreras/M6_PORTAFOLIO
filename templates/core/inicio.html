@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<!-- 1. Jumbotron Personalizado Estilo ACME -->
+<div class="p-5 mb-5 rounded-3 text-center text-white position-relative" 
+     style="background: radial-gradient(circle, #ff4500 0%, #990000 100%); border: 4px solid black; box-shadow: 10px 10px 0px #333;">
+    
+    <!-- Decoración: Tornillos en las esquinas -->
+    <div style="position: absolute; top: 10px; left: 10px; width: 15px; height: 15px; background: gold; border-radius: 50%; border: 2px solid black;"></div>
+    <div style="position: absolute; top: 10px; right: 10px; width: 15px; height: 15px; background: gold; border-radius: 50%; border: 2px solid black;"></div>
+    <div style="position: absolute; bottom: 10px; left: 10px; width: 15px; height: 15px; background: gold; border-radius: 50%; border: 2px solid black;"></div>
+    <div style="position: absolute; bottom: 10px; right: 10px; width: 15px; height: 15px; background: gold; border-radius: 50%; border: 2px solid black;"></div>
+
+    <!-- Contenido del Hero -->
+    <h1 class="display-3 fw-bold text-warning" style="text-shadow: 4px 4px 0px black; transform: rotate(-2deg);">
+        ¡BIENVENIDOS A ACME LABS!
+    </h1>
+    <p class="fs-4 mb-4 fw-bold" style="text-shadow: 2px 2px 0px black;">
+        Inventos locos para problemas cotidianos.
+    </p>
+    <a href="#catalogo" class="btn btn-warning btn-lg fw-bold px-5 py-3">
+        VER CATÁLOGO EXPLOSIVO 👇
+    </a>
+</div>
+
+<!-- 2. Sección: Reseña del Laboratorio -->
+<div class="row mb-5 align-items-center">
+    <div class="col-md-12">
+        <div class="card p-4" style="background-color: #fff; transform: rotate(1deg);">
+            <div class="row g-4 align-items-center">
+                
+                <!-- Columna de la Foto (Estilo Polaroid) -->
+                <div class="col-md-5">
+                    <div class="p-2 bg-white shadow border border-3 border-dark" style="transform: rotate(-3deg);">
+<img src="{% static 'img/acme_labs.avif' %}" 
+     class="img-fluid border border-2 border-dark" 
+     alt="Fábrica Acme"
+     style="width: 100%; height: auto;">
+                        <p class="text-center mt-2 mb-0 fw-bold font-monospace text-muted">📍 Ubicación: Desierto de Arizona</p>
+                    </div>
+                </div>
+
+                <!-- Columna del Texto (Reseña) -->
+                <div class="col-md-7">
+                    <h2 class="display-5 fw-bold text-danger" style="text-shadow: 2px 2px 0px black;">
+                        🏭 NUESTRAS INSTALACIONES
+                    </h2>
+                    <h4 class="text-dark mb-3">"Líderes en caos controlado desde 1949"</h4>
+                    
+                    <p class="fs-5" style="font-family: 'Roboto', sans-serif; line-height: 1.6;">
+                        Ubicados en algún lugar secreto del desierto (sigue las marcas de quemaduras), el <strong>Laboratorio ACME</strong> cuenta con más de 50,000 metros cuadrados de pura innovación explosiva.
+                    </p>
+                    <p class="fs-5" style="font-family: 'Roboto', sans-serif;">
+                        Nuestros científicos, liderados por genios incomprendidos, trabajan día y noche para crear productos que desafían las leyes de la física (y la gravedad). Garantizamos que nuestros yunques son los más pesados del mercado y nuestros cohetes... bueno, suelen encender.
+                    </p>
+                    
+                    <div class="alert alert-warning border-2 border-dark fw-bold mt-3 shadow-sm">
+                        ⭐ <span class="fst-italic">"El mejor proveedor para atrapar correcaminos."</span> - Cliente Anónimo (W.E.C.)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Sección del Catálogo -->
+<div id="catalogo" class="row">
+    {% for servicio in servicios %}
+    <div class="col-md-4 mb-5">
+        <div class="card h-100">
+            <!-- Imagen del Servicio -->
+            <div style="border-bottom: 3px solid #1a1a1a;">
+                {% if servicio.imagen %}
+                    <img src="{{ servicio.imagen.url }}" class="card-img-top" style="height: 220px; object-fit: cover;" alt="{{ servicio.titulo }}">
+                {% else %}
+                    <div class="bg-secondary text-white d-flex align-items-center justify-content-center fw-bold" style="height: 220px; font-size: 1.5rem;">
+                        FOTO PENDIENTE
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Cuerpo de la Tarjeta -->
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title text-center mb-3">{{ servicio.titulo }}</h3>
+                
+                <p class="card-text flex-grow-1 text-secondary" style="font-family: 'Roboto', sans-serif;">
+                    {{ servicio.descripcion }}
+                </p>
+                
+                <div class="text-center my-3">
+                    <span class="badge bg-warning text-dark border border-2 border-dark fs-5 shadow-sm">
+                        Precio: ${{ servicio.precio_aproximado }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Pie de Tarjeta (Botón) -->
+            <div class="card-footer bg-white border-top-0 p-3">
+                <a href="{% url 'crear_pedido' servicio.id %}" class="btn btn-danger w-100 py-2">
+                    🧨 SOLICITAR PEDIDO
+                </a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <!-- Estado Vacío -->
+        <div class="col-12 text-center mt-5">
+            <div class="alert alert-warning border-3 border-dark shadow">
+                <h3>🚫 ¡Vaya! No hay inventos disponibles.</h3>
+                <p>El Coyote se los llevó todos. Vuelve más tarde.</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

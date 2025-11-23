@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2 class="text-center mb-4">Conoce a nuestras Mentes Maestras</h2>
+
+<div class="row justify-content-center">
+    {% for perfil in equipo %}
+    <div class="col-md-3 mb-4">
+        <div class="card text-center h-100 border-0 shadow">
+            <div class="card-body">
+                {% if perfil.foto %}
+                    <img src="{{ perfil.foto.url }}" class="rounded-circle mb-3" width="120" height="120" style="object-fit: cover;">
+                {% else %}
+                    <img src="https://via.placeholder.com/120" class="rounded-circle mb-3">
+                {% endif %}
+                
+                <h5 class="card-title">{{ perfil.user.first_name }} {{ perfil.user.last_name }}</h5>
+                <p class="text-muted mb-1">@{{ perfil.user.username }}</p>
+                
+                <!-- Badge según tipo -->
+                {% if perfil.tipo == 'JEFE' %}
+                    <span class="badge bg-danger mb-2">Jefe de Laboratorio</span>
+                {% else %}
+                    <span class="badge bg-info text-dark mb-2">Trabajador</span>
+                {% endif %}
+                
+                <p class="card-text small">{{ perfil.biografia }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
