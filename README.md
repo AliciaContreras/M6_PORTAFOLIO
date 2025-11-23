@@ -17,7 +17,7 @@ Este proyecto simula un entorno empresarial con roles jerárquicos y flujos de t
 
 *   **Backend:** Python 3, Django 5.
 *   **Base de Datos:** SQLite (Modelo Relacional).
-*   **Frontend:** HTML5, Jinja2 Templates, Bootstrap 5.
+*   **Frontend:** HTML5, Bootstrap 5.
 *   **Manejo de Archivos:** Pillow (para imágenes de perfil y servicios).
 
 ## 🚀 Funcionalidades Clave
