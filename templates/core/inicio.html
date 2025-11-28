@@ -100,7 +100,7 @@
 
             <!-- Pie de Tarjeta (Botón) -->
             <div class="card-footer bg-white border-top-0 p-3">
-                <a href="{% url 'crear_pedido' servicio.id %}" class="btn btn-danger w-100 py-2">
+                <a href="{% url 'login' %}?next={% url 'crear_pedido' servicio.id %}" class="btn btn-danger w-100 py-2">
                     🧨 SOLICITAR PEDIDO
                 </a>
             </div>
